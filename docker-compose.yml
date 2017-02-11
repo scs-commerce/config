@@ -1,0 +1,36 @@
+version: '2'
+services:
+  integration:
+    image: nginx
+    volumes:
+      - ./scs-commerce.nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - landing-page:landing-page
+      - product-list:product-list
+      - order:order
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=scs-commerce.dev
+      - NGINX_PORT=80
+
+  landing-page:
+    build: ../landing-page
+    environment:
+      PORT: "3000"
+    ports:
+      - "3000:3000"
+
+  product-list:
+    build: ../product-list
+    environment:
+      PORT: "3001"
+    ports:
+      - "3001:3001"
+
+  order:
+    build: ../order
+    environment:
+      PORT: "3002"
+    ports:
+      - "3002:3002"
