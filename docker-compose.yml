@@ -6,7 +6,7 @@ services:
       - ./scs-commerce.nginx.conf:/etc/nginx/conf.d/default.conf
     links:
       - landing-page:landing-page
-      - product-list:product-list
+      - products:products
       - order:order
       - assets:assets
     ports:
@@ -22,8 +22,8 @@ services:
     ports:
       - "3000:3000"
 
-  product-list:
-    build: ../product-list
+  products:
+    build: ../products
     environment:
       PORT: "3001"
     ports:
