@@ -8,6 +8,7 @@ services:
       - landing-page:landing-page
       - product-list:product-list
       - order:order
+      - assets:assets
     ports:
       - "80:80"
     environment:
@@ -34,3 +35,10 @@ services:
       PORT: "3002"
     ports:
       - "3002:3002"
+
+  assets:
+    build: ../assets
+    environment:
+      PORT: "3003"
+    ports:
+      - "3003:3003"
