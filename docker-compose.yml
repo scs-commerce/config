@@ -33,8 +33,13 @@ services:
     build: ../order
     environment:
       PORT: "3002"
+      PRODUCTS_URL: "http://products:3001/"
     ports:
       - "3002:3002"
+    links:
+      - products:products
+    depends_on:
+      - products
 
   assets:
     build: ../assets
